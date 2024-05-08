@@ -12,19 +12,22 @@ export const createAccessToken = async (email: string, password: string) => {
     password,
   };
 
-  const data = await graphqlClient.request(
+  const data: any = await graphqlClient.request(
     customerAccessTokenCreateMutation,
     variables
   );
 
-  const { accessToken, expiresAt } = data.customerAccessTokenCreate.customerAccessToken;
+  const { accessToken, expiresAt } =
+    data.customerAccessTokenCreate.customerAccessToken;
 
   if (accessToken) {
     cookiesStore.set("accessToken", accessToken, {
       path: "/",
       expires: new Date(expiresAt),
-      httpOnly: true, 
-      sameSite: "strict",  
+      httpOnly: true,
+      sameSite: "strict",
     });
-  } 
+
+    return accessToken;
+  }
 };

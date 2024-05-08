@@ -5,6 +5,7 @@ import {
 } from "app/services/shopify/collections";
 import { getProducts } from "app/services/shopify/products";
 
+export const runtime = "edge";
 interface CategoryProps {
   params: {
     categories: string[];

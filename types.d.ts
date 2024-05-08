@@ -4,12 +4,22 @@ interface ErrorPageProps {
 }
 
 type ProductType = {
+  id: string;
+  title: string;
   description: string;
+  price: number;
+  image: string;
+  quantity: number;
   handle: string;
+  tags: string;
+  gql_id: string;
+};
+
+type CartItem = {
   id: string;
   image: string;
+  merchandiseId: string;
   price: number;
   quantity: number;
-  tags: string;
   title: string;
-};
+}

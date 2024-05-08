@@ -1,11 +1,20 @@
 "use client";
+import { handleLogin } from "app/actions";
 import styles from "./LoginForm.module.sass";
 
 export const LoginForm = () => {
+
+  const handleSubmit = async (event: any) => {
+    event.preventDefault();
+    
+    const formData = new FormData(event.target);
+    await handleLogin(formData);
+  };
+
   return (
     <div className={styles.NewAccountForm}>
       <h1 className={styles.NewAccountForm__title}>Login</h1>
-      <form className={styles.NewAccountForm__form}>
+      <form className={styles.NewAccountForm__form} onSubmit={handleSubmit}>
         <input
           type="text"
           name="email"
